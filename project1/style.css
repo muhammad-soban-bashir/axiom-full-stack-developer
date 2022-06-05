@@ -39,12 +39,20 @@ h2{
     display: block;
 }
 .form-control input{
-    border: 2px solid white;
+    border: 2px solid grey;
     border-radius: 5px;
     display: block;
     width: 100%;
     padding: 10px;
 }
+.form-control.success input{
+    border: 2px solid grey;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+
 .form-control input:focus{
     outline: 0;
     border-color: grey;
