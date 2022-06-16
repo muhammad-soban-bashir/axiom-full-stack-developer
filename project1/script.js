@@ -30,12 +30,51 @@ function showError(input,message){
 
 function  checkRequired(inputArray){
     inputArray.forEach(element => {
-        if(element.value==='')
-        showError(element,`${capital(element) } is requird`);
-        else showSuccess(element);
+        if(element.value===''){
+            
+            showError(element,`${capital(element) } is requird`);
+        }
+        else if(element===username)
+            {checkLength(element,3,10);}
+        else if(element===password)
+            {checkLength(element,6,30);}
+        else if(element===email){
+                
+            if(!isValidEmail(element.value)){
+                  showError(element,`${capital(element)} is invalid`);
+
+            } else {
+                  showSuccess(element);
+              } 
+            }  
+        else
+         {
+             showSuccess(element);}
     });
 
 }
+
+ function checkPassword(input1, input2){
+   if(input1.value !== input2.value){
+       showError(password2,"password doesnot match");
+   }
+ }
+
+function checkLength(input,min,max){
+    if(input.value.length < min){
+        showError(input,`${capital(input)} needs to be at least ${min} characters`);
+    }else if(input.value.length > max){
+        showError(input,`${capital(input)} needs to be less ${max} characters`);
+     
+    }
+    
+    
+    
+    else
+    showSuccess(input);
+    
+}
+
 
 function capital(obj){
     return obj.id.charAt(0).toUpperCase() + obj.id.slice(1);
@@ -43,7 +82,9 @@ function capital(obj){
 form.addEventListener("submit", function(e){
     e.preventDefault();
     checkRequired([username,email,password,password2]);
-
+    //  checkLength(username,3,10)
+    //  checkLength(password,3,10)
+    checkPassword(password,password2);
 });
 
 
